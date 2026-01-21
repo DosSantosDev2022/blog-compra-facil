@@ -1,8 +1,24 @@
-// services/products.ts
 import { hygraphFetch } from "@/lib/hygraph";
+import type { Product, ProductsConnection } from "@/types/product";
 
-export async function getProducts({ page = 1 }: { page?: number }) {
-  const pageSize = 10; // Conforme solicitado
+/**
+ * Interface para o retorno padronizado da listagem de produtos
+ */
+interface GetProductsResponse {
+  products: Product[];
+  total: number;
+  totalPages: number;
+}
+
+/**
+ * Busca produtos recomendados com suporte a paginação
+ */
+export async function getProducts({ 
+  page = 1 
+}: { 
+  page?: number 
+}): Promise<GetProductsResponse> {
+  const pageSize = 10; // Conforme sua regra de negócio
   const skip = (page - 1) * pageSize;
 
   const query = `
@@ -14,6 +30,8 @@ export async function getProducts({ page = 1 }: { page?: number }) {
         image {
           url
         }
+        description
+        createdAt
       }
       recommendedProductsConnection {
         aggregate {
@@ -23,16 +41,22 @@ export async function getProducts({ page = 1 }: { page?: number }) {
     }
   `;
 
-  const data: any = await hygraphFetch({
+  const data = await hygraphFetch<ProductsConnection>({
     query,
     variables: { first: pageSize, skip },
     tags: ["products"]
   });
 
-  if (!data) return { products: [], totalPages: 0 };
+  // Verificação de segurança para evitar erros de runtime
+  if (!data || !data.recommendedProducts) {
+    return { products: [], total: 0, totalPages: 0 };
+  }
+
+  const totalCount = data.recommendedProductsConnection.aggregate.count;
 
   return {
     products: data.recommendedProducts,
-    totalPages: Math.ceil(data.recommendedProductsConnection.aggregate.count / pageSize)
+    total: totalCount,
+    totalPages: Math.ceil(totalCount / pageSize)
   };
 }

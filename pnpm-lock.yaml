@@ -11,6 +11,9 @@ importers:
       '@graphcms/rich-text-react-renderer':
         specifier: ^0.6.2
         version: 0.6.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@graphcms/rich-text-types':
+        specifier: ^0.5.1
+        version: 0.5.1
       '@radix-ui/react-dialog':
         specifier: ^1.1.15
         version: 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)

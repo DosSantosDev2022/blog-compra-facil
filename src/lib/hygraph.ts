@@ -1,5 +1,5 @@
 // lib/hygraph.ts
-export async function hygraphFetch({ query, variables = {}, tags = [] }: { 
+export async function hygraphFetch<T>({ query, variables = {}, tags = [] }: { 
   query: string, 
   variables?: any,
   tags?: string[] 

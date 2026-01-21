@@ -1,9 +1,16 @@
-// services/articles.ts
 import { hygraphFetch } from "@/lib/hygraph";
+import type { Article, ArticlesConnection } from "@/types/articles";
 
+/** * Interface para o retorno padronizado da listagem de artigos 
+ */
+interface GetArticlesResponse {
+  articles: Article[];
+  total: number;
+  totalPages: number;
+}
 
 /**
- * Busca todos os artigos com suporte a filtros e paginação (Página de Listagem)
+ * Busca todos os artigos com suporte a filtros e paginação
  */
 export async function getArticles({ 
   search = "", 
@@ -13,12 +20,12 @@ export async function getArticles({
   search?: string, 
   category?: string, 
   page?: number 
-}) {
+}): Promise<GetArticlesResponse> {
   const pageSize = 6;
   const skip = (page - 1) * pageSize;
 
-  // Ajuste no filtro: removemos campos nulos para não confundir o Hygraph
-  const whereClause: any = {};
+  // Tipagem do filtro para evitar erros de 'any'
+  const whereClause: Record<string, any> = {};
   
   if (search) {
     whereClause.title_contains = search;
@@ -28,23 +35,24 @@ export async function getArticles({
     whereClause.category = { slug: category.toLowerCase() };
   }
 
-  // CORREÇÃO AQUI: Uma única abertura de query englobando tudo
   const query = `
     query GetArticles($where: ArticleWhereInput, $first: Int, $skip: Int) {
       articles(where: $where, first: $first, skip: $skip, orderBy: publishedAt_DESC) {
         id
         title
         slug
+        publishedAt
         category {
           name
+          slug
         }
         coverImage {
           url
         }
         content {
           raw
+          html
         }
-        createdAt
       }
       articlesConnection(where: $where) {
         aggregate {
@@ -54,13 +62,12 @@ export async function getArticles({
     }
   `;
 
-  const data: any = await hygraphFetch({
+  const data = await hygraphFetch<ArticlesConnection>({
     query,
     variables: { where: whereClause, first: pageSize, skip },
     tags: ["articles"]
   });
 
-  // Verificação de segurança caso o data venha vazio
   if (!data) return { articles: [], total: 0, totalPages: 0 };
 
   return {
@@ -71,65 +78,71 @@ export async function getArticles({
 }
 
 /**
- * Busca um único artigo pelo Slug (Página de Detalhes)
+ * Busca um único artigo pelo Slug
  */
-export async function getArticleBySlug(slug: string) {
+export async function getArticleBySlug(slug: string): Promise<Article | null> {
   const query = `
     query GetArticleBySlug($slug: String!) {
       article(where: { slug: $slug }) {
         id
-          title
+        title
+        slug
+        publishedAt
+        category {
+          name
           slug
-          category {
-            name
-          }
-          coverImage {
-            url
-          }
-          publishedAt
-          content {
-            raw
-          }
+        }
+        coverImage {
+          url
+        }
+        content {
+          raw
+          html
+        }
       }
     }
   `;
 
-  const data = await hygraphFetch({
+  // Tipamos o retorno do fetch como um objeto que contém 'article' ou null
+  const data = await hygraphFetch<{ article: Article | null }>({
     query,
     variables: { slug },
     tags: [`article:${slug}`]
   });
 
-  return data.article;
+  return data?.article || null;
 }
 
 /**
  * Busca artigos em destaque para a Home
  */
-export async function getFeaturedArticles() {
+export async function getFeaturedArticles(): Promise<Article[]> {
   const query = `
     query GetFeaturedArticles {
-      articles (first: 3, orderBy: publishedAt_DESC) {
-          id
-          title
+      articles(first: 3, orderBy: publishedAt_DESC) {
+        id
+        title
+        slug
+        publishedAt
+        category {
+          name
           slug
-          category {
-            name
-          }
-          coverImage {
-            url
-          }
-          content {
-            raw
-          }
+        }
+        coverImage {
+          url
+        }
+        content {
+          raw
+          html
         }
       }
+    }
   `;
 
-  const data = await hygraphFetch({
+  const data = await hygraphFetch<{ articles: Article[] }>({
     query,
     tags: ["articles", "featured"]
   });
 
-  return data.articles;
+  return data?.articles || [];
 }
