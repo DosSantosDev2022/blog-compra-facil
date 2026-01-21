@@ -10,7 +10,7 @@ import { defaultRenders } from "@/components/global/richTextRenders";
 import { AdBanner } from "@/components/global/ad-banner";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 // Função para gerar Metadados Dinâmicos (Essencial para SEO)
 export async function generateMetadata({
@@ -79,7 +79,7 @@ export default async function ArticlePage({
         {/* COLUNA PRINCIPAL: O ARTIGO (Lg: col-span-8) */}
         <article className="lg:col-span-8 space-y-6">
           <header className="space-y-4">
-            <Badge className="bg-red-600"># {article.category.name}</Badge>
+            <Badge className="bg-red-600"># {article.category?.name || "Geral"}</Badge>
             <h1 className="text-3xl md:text-5xl font-black leading-tight text-zinc-900">
               {article.title}
             </h1>

@@ -49,7 +49,7 @@ export default async function HomePage() {
           <div className="lg:col-span-6 p-8 lg:p-16 flex flex-col justify-center items-start space-y-8">
             <div className="flex items-center gap-3">
               <Badge className="bg-red-600 hover:bg-red-700 text-white border-none px-4 py-1 rounded-full font-bold text-xs">
-                {latestArticle.category.name || "DESTAQUE"}
+                {latestArticle.category?.name || "DESTAQUE"}
               </Badge>
             </div>
 
