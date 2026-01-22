@@ -22,6 +22,9 @@ const NavLinks = ({ className = "" }: { className?: string }) => (
     <Link href="/produtos" className={`${className} hover:text-red-600 transition-colors`}>
       Loja do Torcedor
     </Link>
+    <Link href="/elenco" className={`${className} hover:text-red-600 transition-colors`}>
+      Elenco
+    </Link>
   </>
 );
 

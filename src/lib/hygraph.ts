@@ -13,9 +13,10 @@ export async function hygraphFetch<T>({ query, variables = {}, tags = [] }: {
       Authorization: `Bearer ${process.env.HYGRAPH_TOKEN}`,
     },
     body: JSON.stringify({ query, variables }),
+    cache:"no-cache",
     next: {
       tags: tags, // Aqui está o segredo do cache estratégico!
-      revalidate: 3600, // Revalida a cada hora por segurança
+      /* revalidate: 10, // Revalida a cada hora por segurança */
     },
   });
 

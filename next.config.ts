@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
 				hostname: 'us-west-2.graphassets.com',
 				pathname: '/**',
 			},
+      {
+				protocol: 'https',
+				hostname: 'via.placeholder.com',
+				pathname: '/**',
+			},
     ]
   },
   reactCompiler: true,

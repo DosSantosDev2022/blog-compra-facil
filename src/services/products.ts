@@ -30,7 +30,6 @@ export async function getProducts({
         image {
           url
         }
-        description
         createdAt
       }
       recommendedProductsConnection {
