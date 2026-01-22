@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { ShareButtons } from "@/components/global";
 import { Separator } from "@/components/ui/separator";
-import { getArticleBySlug } from "@/services/articles";
+import { getArticleBySlug, getRelatedArticles } from "@/services/articles";
 import { notFound } from "next/navigation";
 import { RichText } from "@/components/global/richText";
 import { defaultRenders } from "@/components/global/richTextRenders";
@@ -11,6 +11,8 @@ import { AdBanner } from "@/components/global/ad-banner";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { Article } from "@/types/articles";
 
 // Função para gerar Metadados Dinâmicos (Essencial para SEO)
 export async function generateMetadata({
@@ -72,6 +74,14 @@ export default async function ArticlePage({
     notFound();
   }
 
+  // BUSCA DOS RELACIONADOS: Usamos o slug da categoria e o ID do artigo atual
+  const relatedArticles = await getRelatedArticles(
+    article.category?.slug || "geral",
+    article.id
+  );
+
+
+
   return (
     <main className="container mx-auto px-4 py-8 lg:py-12">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -128,25 +138,34 @@ export default async function ArticlePage({
             </h2>
 
             <div className="flex flex-col gap-6">
-              {/* Mini cards de artigos relacionados */}
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="flex gap-4 group cursor-pointer">
-                  <div className="relative h-20 w-32 shrink-0 overflow-hidden rounded-md">
-                    <Image
-                      src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=400"
-                      alt="Relacionado"
-                      fill
-                      className="object-cover transition-transform group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-center">
-                    <h3 className="font-bold text-sm line-clamp-2 group-hover:text-red-600 transition-colors">
-                      Título curto de outra notícia sobre o Tricolor
-                    </h3>
-                    <span className="text-xs text-muted-foreground mt-1">Há 2 horas</span>
-                  </div>
-                </div>
-              ))}
+              {relatedArticles.length > 0 ? (
+                relatedArticles.map((related: Article) => (
+                  <Link
+                    key={related.id}
+                    href={`/artigos/${related.slug}`}
+                    className="flex gap-4 group cursor-pointer"
+                  >
+                    <div className="relative h-20 w-32 shrink-0 overflow-hidden rounded-md">
+                      <Image
+                        src={related.coverImage.url}
+                        alt={related.title}
+                        fill
+                        className="object-cover transition-transform group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <h3 className="font-bold text-sm line-clamp-2 group-hover:text-red-600 transition-colors leading-tight">
+                        {related.title}
+                      </h3>
+                      <span className="text-xs text-muted-foreground mt-1 uppercase font-medium">
+                        {format(new Date(related.publishedAt), 'dd/MM/yyyy')}
+                      </span>
+                    </div>
+                  </Link>
+                ))
+              ) : (
+                <p className="text-sm text-muted-foreground italic">Nenhum artigo relacionado encontrado.</p>
+              )}
             </div>
 
             {/* BOX DE ADSENSE LATERAL */}

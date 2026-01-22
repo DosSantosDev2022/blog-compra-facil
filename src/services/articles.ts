@@ -146,3 +146,37 @@ export async function getFeaturedArticles(): Promise<Article[]> {
 
   return data?.articles || [];
 }
+
+/**
+ * Busca artigos relacionados pela categoria (excluindo o atual)
+ */
+export async function getRelatedArticles(categorySlug: string, currentId: string) {
+  const query = `
+    query GetRelatedArticles($categorySlug: String!, $currentId: ID!) {
+      articles(
+        where: { 
+          category: { slug: $categorySlug }, 
+          id_not: $currentId 
+        }, 
+        first: 3, 
+        orderBy: publishedAt_DESC
+      ) {
+        id
+        title
+        slug
+        publishedAt
+        coverImage {
+          url
+        }
+      }
+    }
+  `;
+
+  const data = await hygraphFetch<{ articles: Article[] }>({
+    query,
+    variables: { categorySlug, currentId },
+    tags: ["articles", "related"]
+  });
+
+  return data?.articles || [];
+}
