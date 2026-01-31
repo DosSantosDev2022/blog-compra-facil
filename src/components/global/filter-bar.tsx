@@ -59,8 +59,8 @@ const FilterBar = () => {
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
           <Input
-            placeholder="Ex: Calleri, MorumBIS..."
-            className="pl-9 rounded-xl border-zinc-200 focus:ring-red-600"
+            placeholder="Ex: Smartphone, notebook..."
+            className="pl-9 rounded-xl border-border focus:ring-ring"
             defaultValue={searchParams.get("search")?.toString()}
             onChange={(e) => handleSearch(e.target.value)}
           />
@@ -72,7 +72,7 @@ const FilterBar = () => {
           Categorias
         </h3>
         <div className="flex flex-wrap gap-2">
-          {["all", "Mercado da bola", "Campeonato Paulista", "Brasileirão", "Categoria de base"].map((cat) => {
+          {["all", "Smartphone", "Notebook", "Eletrodomésticos", "Eletrônicos", "Casa", "Decoração", "Automotivo", "Fitness"].map((cat) => {
             const catSlug = slugify(cat);
             const isActive = currentCategory === catSlug || (cat === "all" && currentCategory === "all");
 
@@ -83,8 +83,8 @@ const FilterBar = () => {
                 size="sm"
                 onClick={() => setCategory(cat)}
                 className={isActive
-                  ? "bg-red-600 hover:bg-red-700 text-white border-none rounded-full font-bold px-4"
-                  : "rounded-full border-zinc-200 text-zinc-600 hover:border-red-600 hover:text-red-600 transition-all px-4"
+                  ? " text-white border-none rounded-full font-bold px-4"
+                  : "rounded-full hover:border-accent transition-all px-4"
                 }
               >
                 {cat === "all" ? "Todas" : cat}
@@ -97,7 +97,7 @@ const FilterBar = () => {
       {(searchParams.get("search") || searchParams.get("category")) && (
         <Button
           variant="ghost"
-          className="w-full text-zinc-400 hover:text-red-600 font-bold text-xs uppercase tracking-widest transition-colors"
+          className="w-full  font-bold text-xs uppercase tracking-widest transition-colors"
           onClick={() => replace(pathname)}
         >
           <X className="mr-2 h-4 w-4" /> Limpar Filtros

@@ -22,16 +22,16 @@ export default async function ArticlesPage({
       {/* HEADER DA PÁGINA */}
       <header className="mb-8 space-y-2">
         <h1 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter">
-          Arquivo <span className="text-red-600">Tricolor</span>
+          Todos <span className="text-primary">Artigos</span>
         </h1>
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <p className="text-muted-foreground max-w-md">
-            Explore nossa base de conhecimentos, notícias e análises táticas sobre o SPFC.
+            Explore nossa base de conhecimentos, notícias e análises sobre os melhores produtos do mercado.
           </p>
 
           {/* Contador de Resultados amigável */}
           <div className="text-sm font-medium bg-zinc-100 dark:bg-zinc-800 px-4 py-2 rounded-full w-fit">
-            <span className="text-red-600">{total}</span> notícias encontradas
+            <span className="text-primary">{total}</span> notícias encontradas
           </div>
         </div>
       </header>

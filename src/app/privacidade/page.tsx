@@ -20,7 +20,7 @@ export default function PrivacyPage() {
 
         <div className="space-y-4">
           <p className="text-lg leading-relaxed">
-            A sua privacidade é importante para nós. É política do <strong>Soberano Tricolor</strong> respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site.
+            A sua privacidade é importante para nós. É política do <strong>Compra fácil</strong> respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site.
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
         <div className="space-y-4">
           <h2 className="text-2xl font-bold text-zinc-900 dark:text-white uppercase">3. Divulgação de Afiliados</h2>
           <p>
-            O Soberano Tricolor participa de programas de marketing de afiliados. Isso significa que podemos ganhar uma comissão sobre as compras efetuadas através de links para sites de parceiros (como a Loja do Torcedor). Isso não gera custo adicional para você.
+            O Blog Compra fácil participa de programas de marketing de afiliados. Isso significa que podemos ganhar uma comissão sobre as compras efetuadas através de links para sites de parceiros (como a Loja do Torcedor). Isso não gera custo adicional para você.
           </p>
         </div>
 

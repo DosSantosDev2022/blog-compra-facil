@@ -14,7 +14,7 @@ console.log(
 module.exports = {
 	siteUrl:
 		process.env.NEXT_PUBLIC_SITE_URL ||
-		'https://blog-soberano-tricolor.vercel.app/',
+		'https://comprafacil.vercel.app/',
 	generateRobotsTxt: true,
 	sitemapSize: 500,
 	outDir: './public',

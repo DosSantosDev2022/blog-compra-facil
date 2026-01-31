@@ -25,21 +25,21 @@ export async function generateMetadata({
 
   if (!article) {
     return {
-      title: "Artigo não encontrado | Soberano Tricolor",
+      title: "Artigo não encontrado | Compra fácil",
     };
   }
 
-  const url = `https://soberanotricolor.com.br/artigos/${slug}`;
+  const url = `https://comprafacil.com.br/artigos/${slug}`;
 
   return {
-    title: `${article.title} | Soberano Tricolor`,
+    title: `${article.title} | Compra fácil`,
     description: article.excerpt,
     alternates: { canonical: url },
     openGraph: {
       title: article.title,
       description: article.excerpt,
       url: url,
-      siteName: "Soberano Tricolor",
+      siteName: "Compra fácil",
       images: [
         {
           url: article.coverImage.url,
@@ -89,7 +89,7 @@ export default async function ArticlePage({
         {/* COLUNA PRINCIPAL: O ARTIGO (Lg: col-span-8) */}
         <article className="lg:col-span-8 space-y-6">
           <header className="space-y-4">
-            <Badge className="bg-red-600"># {article.category?.name || "Geral"}</Badge>
+            <Badge className="bg-primary"># {article.category?.name || "Geral"}</Badge>
             <h1 className="text-3xl md:text-5xl font-black leading-tight text-zinc-900">
               {article.title}
             </h1>
@@ -133,7 +133,7 @@ export default async function ArticlePage({
         {/* COLUNA LATERAL: RELACIONADOS (Lg: col-span-4) */}
         <aside className="lg:col-span-4 space-y-8">
           <div className="sticky top-24 space-y-6">
-            <h2 className="text-xl font-bold border-l-4 border-red-600 pl-3 italic uppercase">
+            <h2 className="text-xl font-bold border-l-4 border-primary pl-3 italic uppercase">
               Leia Também
             </h2>
 
@@ -154,7 +154,7 @@ export default async function ArticlePage({
                       />
                     </div>
                     <div className="flex flex-col justify-center">
-                      <h3 className="font-bold text-sm line-clamp-2 group-hover:text-red-600 transition-colors leading-tight">
+                      <h3 className="font-bold text-sm line-clamp-2 group-hover:text-primary transition-colors leading-tight">
                         {related.title}
                       </h3>
                       <span className="text-xs text-muted-foreground mt-1 uppercase font-medium">

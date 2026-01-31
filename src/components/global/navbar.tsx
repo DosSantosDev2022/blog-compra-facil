@@ -16,21 +16,18 @@ import {
 // Componente para os links (evita repetição)
 const NavLinks = ({ className = "" }: { className?: string }) => (
   <>
-    <Link href="/artigos" className={`${className} hover:text-red-600 transition-colors`}>
+    <Link href="/artigos" className={`${className} hover:text-primary transition-colors`}>
       Artigos
     </Link>
-    <Link href="/produtos" className={`${className} hover:text-red-600 transition-colors`}>
-      Loja do Torcedor
-    </Link>
-    <Link href="/elenco" className={`${className} hover:text-red-600 transition-colors`}>
-      Elenco
+    <Link href="/produtos" className={`${className} hover:text-primary transition-colors`}>
+      Produtos recomendados
     </Link>
   </>
 );
 
 const Navbar = () => {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-zinc-950 text-white">
+    <header className="sticky top-0 z-50 w-full border-b bg-background">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
 
         {/* LADO ESQUERDO: LOGO E NAV DESKTOP */}
@@ -48,8 +45,8 @@ const Navbar = () => {
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-zinc-500" />
             <Input
               type="search"
-              placeholder="Buscar notícias..."
-              className="w-50 pl-8 lg:w-75 bg-zinc-900 border-zinc-800 text-white focus:ring-red-600"
+              placeholder="Buscar artigos..."
+              className="w-50 pl-8 lg:w-75 bg-secondary border border-border text-white focus:ring-ring"
             />
           </form>
 

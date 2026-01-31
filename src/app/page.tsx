@@ -48,7 +48,7 @@ export default async function HomePage() {
           <div className="lg:col-span-6 p-6 md:p-10 lg:p-16 flex flex-col justify-center items-start space-y-4 md:space-y-6 lg:space-y-8">
             <div className="flex items-center gap-3">
               {/* Badge corrigido: Usando span ou componente Badge do Shadcn (não o ícone da Lucide) */}
-              <span className="bg-red-600 text-white px-3 py-1 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-wider">
+              <span className="bg-primary text-white px-3 py-1 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-wider">
                 {latestArticle.category?.name || "DESTAQUE"}
               </span>
             </div>
@@ -59,9 +59,9 @@ export default async function HomePage() {
             </h1>
 
             <div className="pt-2 md:pt-4 w-full">
-              <Button asChild size="default" className="w-full md:w-auto bg-white text-black hover:bg-red-600 hover:text-white font-bold rounded-xl px-6 py-5 h-auto transition-all group">
+              <Button asChild size="default" className="w-full md:w-auto bg-white text-black hover:bg-primary hover:text-white font-bold rounded-xl px-6 py-5 h-auto transition-all group">
                 <Link href={`/artigos/${latestArticle.slug}`} className="flex items-center justify-center gap-2">
-                  LER NOTÍCIA COMPLETA
+                  LER ARTIGO
                   <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
                 </Link>
               </Button>

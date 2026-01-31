@@ -12,7 +12,7 @@ const defaultRenders = {
 
   // H1: Título de impacto com a cor do clube
   h1: ({ children }: DefaultRendersProps) => (
-    <h1 className="text-zinc-950 dark:text-white font-black text-4xl tracking-tighter leading-[1.1] my-10 md:text-6xl border-l-8 border-red-600 pl-4">
+    <h1 className="text-zinc-950 dark:text-white font-black text-4xl tracking-tighter leading-[1.1] my-10 md:text-6xl border-l-8 border-primary pl-4">
       {children}
     </h1>
   ),
@@ -25,7 +25,7 @@ const defaultRenders = {
 
   // P: Ajustado para fonte "Sans" limpa, garantindo legibilidade longa
   p: ({ children }: DefaultRendersProps) => (
-    <p className="text-zinc-800 dark:text-zinc-300 text-base leading-relaxed lg:text-lg my-6 selection:bg-red-600 selection:text-white">
+    <p className="text-zinc-800 dark:text-zinc-300 text-base leading-relaxed lg:text-lg my-6 selection:bg-primary selection:text-white">
       {children}
     </p>
   ),
@@ -36,7 +36,7 @@ const defaultRenders = {
       href={href}
       target={href?.startsWith('http') ? "_blank" : "_self"}
       rel="noopener noreferrer"
-      className="text-red-600 font-semibold transition-all duration-200 underline decoration-red-600/30 underline-offset-4 hover:decoration-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 px-1 rounded"
+      className="text-primary font-semibold transition-all duration-200 underline decoration-primary/30 underline-offset-4 hover:decoration-primary hover:bg-primary/10 dark:hover:bg-primary/30 px-1 rounded"
     >
       {children}
     </a>
@@ -53,14 +53,14 @@ const defaultRenders = {
 
   li: ({ children }: DefaultRendersProps) => (
     <li className="flex gap-3 text-zinc-800 dark:text-zinc-300">
-      <span className="text-red-600 mt-1.5 shrink-0">▪</span>
+      <span className="text-primary mt-1.5 shrink-0">▪</span>
       <span>{children}</span>
     </li>
   ),
 
   // Bloco de citação: Estilo "MorumBIS"
   blockquote: ({ children }: DefaultRendersProps) => (
-    <blockquote className="my-10 border-l-4 border-red-600 bg-zinc-50 dark:bg-zinc-900 p-6 italic rounded-r-xl shadow-sm quote-icon">
+    <blockquote className="my-10 border-l-4 border-primary bg-zinc-50 dark:bg-zinc-900 p-6 italic rounded-r-xl shadow-sm quote-icon">
       <div className="text-zinc-700 dark:text-zinc-400">
         {children}
       </div>

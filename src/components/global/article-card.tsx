@@ -33,7 +33,7 @@ const ArticleCard = ({ article }: { article: any }) => {
 
         {/* Badge flutuante mais elegante */}
         <div className="absolute top-3 left-3">
-          <Badge className="bg-red-600 hover:bg-red-700 text-[10px] font-bold uppercase tracking-wider border-none px-3 py-1 shadow-lg">
+          <Badge className="bg-primary text-[10px] font-bold uppercase tracking-wider border-none px-3 py-1 shadow-lg">
             {article.category?.name || "Geral"}
           </Badge>
         </div>
@@ -43,17 +43,17 @@ const ArticleCard = ({ article }: { article: any }) => {
       <div className="flex flex-col flex-1 p-5 space-y-3">
         {/* Data com ícone ou estilo sutil */}
         <div className="flex items-center gap-2 text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
-          <span className="w-2 h-2 rounded-full bg-red-600" />
+          <span className="w-2 h-2 rounded-full bg-primary" />
           {formattedDate}
         </div>
 
         {/* Título: Agora com fonte mais forte e espaçamento menor */}
-        <h3 className="text-xl font-black leading-tight text-zinc-900 dark:text-white group-hover:text-red-600 transition-colors line-clamp-3 italic uppercase tracking-tighter">
+        <h3 className="text-xl font-black leading-tight text-zinc-900 dark:text-white group-hover:text-primary transition-colors line-clamp-3 italic uppercase tracking-tighter">
           {article.title}
         </h3>
 
         {/* Rodapé do Card: "Leia mais" que aparece no hover */}
-        <div className="mt-auto pt-4 flex items-center text-xs font-bold text-red-600 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="mt-auto pt-4 flex items-center text-xs font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
           LER AGORA <span className="ml-2">→</span>
         </div>
       </div>
