@@ -72,7 +72,7 @@ export default async function HomePage() {
 
       {/* SEÇÃO DE ARTIGOS RECENTES */}
       <section className="space-y-8">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-l-4 border-red-600 pl-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-l-4 border-primary pl-4">
           <div>
             <h2 className="text-3xl font-black uppercase tracking-tight">Melhores artigos</h2>
             <p className="text-muted-foreground italic">Uma análise dos melhores produtos para você.</p>
