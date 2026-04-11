@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
 import Script from "next/script";
 import { Footer, Navbar } from "@/components/global";
+import "./globals.css";
 
 const poppins = Poppins({
   weight: ['200', '300', '400', '500', '600', '700', '800'],
@@ -10,24 +10,26 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://comprafacil.com.br"),
+  // URL oficial do blog
+  metadataBase: new URL("https://soberanotricolor.com.br"),
 
   title: {
-    default: "Compra Fácil | Reviews e Recomendações de Produtos",
-    template: "%s | Compra Fácil"
+    default: "Soberano Tricolor | Notícias, Jogos e Bastidores do São Paulo FC",
+    template: "%s | Soberano Tricolor"
   },
 
-  // 2. Descrição focada em conversão e ajuda ao consumidor
-  description: "Encontre as melhores análises de produtos físicos. No Compra Fácil, testamos e selecionamos os melhores itens para sua casa, tecnologia e dia a dia com links de afiliados confiáveis.",
+  description: "Acompanhe tudo sobre o São Paulo FC no Soberano Tricolor. Notícias atualizadas, análise tática, mercado da bola e o dia a dia do nosso Tricolor Paulista.",
 
-  // 3. Palavras-chave relevantes para o nicho de afiliados
   keywords: [
-    "review de produtos",
-    "melhores produtos do ano",
-    "guia de compra",
-    "análise de eletrônicos",
-    "compras online",
-    "recomendações de produtos"
+    "São Paulo FC",
+    "Notícias do São Paulo",
+    "Soberano Tricolor",
+    "Tricolor Paulista",
+    "SPFC",
+    "Jogos do São Paulo",
+    "Mercado da bola SPFC",
+    "Bastidores do São Paulo",
+    "Análise tática São Paulo"
   ],
 
   icons: {
@@ -35,14 +37,28 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
 
-  // 4. Metadados para Redes Sociais (Opcional, mas recomendado)
   openGraph: {
-    title: "Compra Fácil - Reviews de Produtos",
-    description: "As melhores análises de produtos físicos para ajudar você a comprar com segurança.",
+    title: "Soberano Tricolor - O Coração do São Paulo FC",
+    description: "Fique por dentro de todas as novidades do Tricolor Paulista com análises profundas e notícias em tempo real.",
     type: "website",
     locale: "pt_BR",
-    url: "https://comprafacil.com.br",
-    siteName: "Compra Fácil",
+    url: "https://soberanotricolor.com.br",
+    siteName: "Soberano Tricolor",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Soberano Tricolor - Notícias do SPFC",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Soberano Tricolor | Notícias do SPFC",
+    description: "Tudo sobre o São Paulo Futebol Clube em um só lugar.",
+    images: ["/og-image.png"],
   },
 };
 

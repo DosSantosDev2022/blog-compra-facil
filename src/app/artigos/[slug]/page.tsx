@@ -25,21 +25,21 @@ export async function generateMetadata({
 
   if (!article) {
     return {
-      title: "Artigo não encontrado | Compra fácil",
+      title: "Artigo não encontrado | Soberano Tricolor",
     };
   }
 
-  const url = `https://comprafacil.com.br/artigos/${slug}`;
+  const url = `https://soberanotricolor.com.br/artigos/${slug}`;
 
   return {
-    title: `${article.title} | Compra fácil`,
+    title: `${article.title} | Soberano Tricolor`,
     description: article.excerpt,
     alternates: { canonical: url },
     openGraph: {
       title: article.title,
       description: article.excerpt,
       url: url,
-      siteName: "Compra fácil",
+      siteName: "Soberano Tricolor",
       images: [
         {
           url: article.coverImage.url,

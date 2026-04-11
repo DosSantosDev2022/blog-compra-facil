@@ -75,7 +75,7 @@ const defaultRenders = {
         {src && (
           <img
             src={src}
-            alt={altText ?? 'Imagem SPFC.news'}
+            alt={'Imagem Soberano Tricolor'}
             width={width || 1200}
             height={height || 675}
             className="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-500"

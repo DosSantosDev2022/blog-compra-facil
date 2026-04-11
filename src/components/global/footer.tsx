@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { Mail, Github, Instagram, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Logo } from "./logo";
+import { Instagram, Youtube } from ".";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -16,12 +16,11 @@ const Footer = () => {
           <div className="space-y-4">
             <Logo />
             <p className="text-sm leading-relaxed">
-              Encontre as melhores análises de produtos físicos. No Compra Fácil, testamos e selecionamos os melhores itens para sua casa, tecnologia e dia a dia com links de afiliados confiáveis.
+              O ponto de encontro oficial do torcedor são-paulino. Notícias, análises e tudo o que acontece no MorumBIS em tempo real. Pelo São Paulo, com todo o nosso sentimento.
             </p>
             <div className="flex gap-4">
-              <Link href="#" className="hover:text-primary transition-colors"><Twitter size={20} /></Link>
               <Link href="#" className="hover:text-primary transition-colors"><Instagram size={20} /></Link>
-              <Link href="#" className="hover:text-primary transition-colors"><Mail size={20} /></Link>
+              <Link href="#" className="hover:text-primary transition-colors"><Youtube size={20} /></Link>
             </div>
           </div>
 
@@ -62,7 +61,7 @@ const Footer = () => {
 
         {/* Linha Inferior: Copyright */}
         <div className="mt-12 pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-          <p>© {currentYear} Compra fácil - Todos os direitos reservados.</p>
+          <p>© {currentYear} Soberano Tricolor - Todos os direitos reservados.</p>
           <div className="flex items-center gap-2">
             <span>Desenvolvido por</span>
             <span className="text-primary">dossantosdev</span>

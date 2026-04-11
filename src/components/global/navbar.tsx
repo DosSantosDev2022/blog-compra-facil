@@ -30,16 +30,16 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 w-full border-b bg-background">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
 
-        {/* LADO ESQUERDO: LOGO E NAV DESKTOP */}
+        {/* LADO ESQUERDO: LOGO */}
         <div className="flex items-center gap-6">
           <Logo />
+        </div>
+
+        {/* LADO DIREITO: BUSCA, MENU DESKTOP  E MENU MOBILE */}
+        <div className="flex items-center gap-4">
           <nav className="hidden md:flex gap-6 text-sm font-bold uppercase tracking-wide">
             <NavLinks />
           </nav>
-        </div>
-
-        {/* LADO DIREITO: BUSCA E MENU MOBILE */}
-        <div className="flex items-center gap-4">
           {/* Busca Desktop */}
           <form className="relative hidden lg:block">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-zinc-500" />
@@ -54,7 +54,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-white hover:bg-zinc-900">
+                <Button variant="ghost" size="icon" className="text-red-600 hover:bg-zinc-900 border-border">
                   <Menu className="h-6 w-6" />
                   <span className="sr-only">Abrir menu</span>
                 </Button>
